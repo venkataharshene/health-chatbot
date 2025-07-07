@@ -1,0 +1,83 @@
+import random
+
+def chatbot_response(user_input):
+    responses = {
+        "hello": ["Hello! How can I assist you with your health today?", "Hi there! What brings you here today?"],
+        "how are you": ["I'm just a program, but I'm here to help you!", "I'm good! Ready to assist you."],
+        "fever": [
+            "You might have a fever. You can take Paracetamol (500mg) every 6 hours. Stay hydrated and rest. If it persists, see a doctor."
+        ],
+        "headache": [
+            "A headache could be due to stress or dehydration. Try taking Ibuprofen (200mg) or Acetaminophen. Avoid overuse and rest well."
+        ],
+        "cold": [
+            "For a cold, you can try Cetirizine (10mg) once a day for allergies, and steam inhalation can also help. Drink warm fluids."
+        ],
+        "cough": [
+            "For a cough, Dextromethorphan syrup can be used as directed on the bottle. If the cough persists, consult a doctor."
+        ],
+        "stomach pain": [
+            "For stomach pain, take Dicyclomine (10mg) for cramps or Omeprazole (20mg) if it's due to acidity. If severe, see a doctor."
+        ],
+        "diarrhea": [
+            "For diarrhea, stay hydrated. Take ORS (oral rehydration solution) and Loperamide (2mg) after each loose stool. Consult a doctor if it continues."
+        ],
+        "vomiting": [
+            "For vomiting, you can take Ondansetron (4mg) before meals. Stay hydrated and rest. If it persists, see a doctor."
+        ],
+        "diabetes": [
+            "For diabetes management, maintain a healthy diet, exercise regularly, and monitor your blood sugar. Metformin (500mg) is commonly prescribed, but consult your doctor for a personalized plan."
+        ],
+        "parkinson": [
+            "For Parkinson's Disease, Levodopa-Carbidopa is commonly prescribed to manage symptoms. Regular physical therapy and follow-ups with a neurologist are essential."
+        ],
+        "skin disease": [
+            "For general skin diseases, Hydrocortisone cream can help with inflammation. Antifungal creams like Clotrimazole (1%) are used for fungal infections. Consult a dermatologist for persistent issues."
+        ],
+        "back pain": [
+            "For back pain, you can use Ibuprofen (400mg) or apply topical pain relief gel like Diclofenac. Physical therapy and stretching exercises can help with chronic back pain."
+        ],
+        "hypertension": [
+            "For high blood pressure, lifestyle changes like reducing salt intake and regular exercise are crucial. Common medications include Amlodipine (5mg) or Losartan (50mg). Consult your doctor for proper guidance."
+        ],
+        "asthma": [
+            "For asthma, using a rescue inhaler like Albuterol can help during an attack. Long-term medications like Montelukast (10mg) or corticosteroid inhalers are often prescribed."
+        ],
+        "migraine": [
+            "For migraines, you can take Sumatriptan (50mg) or Ibuprofen (400mg) at the onset of symptoms. Rest in a dark, quiet room and avoid triggers."
+        ],
+        "constipation": [
+            "For constipation, take a fiber-rich diet. You can also use Polyethylene Glycol (PEG) or Lactulose syrup as needed."
+        ],
+        "skin rash": [
+            "For a skin rash, use Calamine lotion for irritation or Hydrocortisone cream for inflammation. Consult a doctor if it worsens."
+        ],
+        "acidity": [
+            "For acidity, take Omeprazole (20mg) or Ranitidine (150mg) before meals. Avoid spicy foods and eat smaller meals."
+        ],
+        "default": [
+            "I'm sorry, I didn't understand that. Can you rephrase?", 
+            "I'm here to help. Could you clarify your question?"
+        ]
+    }
+
+    # Normalize user input
+    user_input = user_input.lower()
+
+    # Search for a keyword in the user input
+    for key in responses:
+        if key in user_input:
+            return random.choice(responses[key])
+
+    # Default response if no keywords match
+    return random.choice(responses["default"])
+
+# Chatbot interaction
+print("HealthBot: Hi! I'm HealthBot. How can I help you today?")
+while True:
+    user_input = input("You: ")
+    if "bye" in user_input.lower():
+        print("HealthBot:", chatbot_response(user_input))
+        break
+    else:
+        print("HealthBot:", chatbot_response(user_input))
